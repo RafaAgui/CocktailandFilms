@@ -18,7 +18,7 @@ const films = await getCollection('films');
             <a href={`/films/${film.slug}`}>
               <li class="films-item">
                 <h2 class="films-title">{title}</h2>
-                <img transition:name={`img-${film.slug}`}  class="films-img" src={`src/assets/images/${img}`} alt={title}>
+                <img transition:name={`img-${film.slug}`}  class="films-img" src={`./assets/images/${img}`} alt={title}>
                 <p class="films-text">Director: {director}</p> 
                 <p class="films-text">Año: {year}</p>
                 
