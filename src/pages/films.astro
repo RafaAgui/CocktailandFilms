@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const films = await getCollection('films');
+---
+
+<Layout title="Cine Quinqui">
+  <>
+    <h1>Cine Quinqui</h1>
+    <section>
+      <ul class="films">
+        {
+        films.map(film => {
+          const { data } = film;
+          const { director, year, title, img } = data;
+          return (
+            <a href={`/films/${film.slug}`}>
+              <li class="films-item">
+                <h2 class="films-title">{title}</h2>
+                <img transition:name={`img-${film.slug}`}  class="films-img" src={`src/assets/images/${img}`} alt={title}>
+                <p class="films-text">Director: {director}</p> 
+                <p class="films-text">Año: {year}</p>
+                
+              </li>
+            </a>
+          );
+        })
+      }
+      </ul>
+    </section>
+  </>
+</Layout>
+
+
+<style>
+  h1 {
+    font-size: 5rem;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+.films {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+.films-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  cursor: pointer;
+  border: 1px solid #000;
+  height: 100%;
+}
+.films-title {
+  width: 100%;
+  height: 105px;
+  line-height: 1;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #000;
+}
+.films-text,
+.films-img {
+  padding-inline: 1rem;
+}
+</style>

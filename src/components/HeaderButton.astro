@@ -1,0 +1,34 @@
+---
+interface Props {
+	link: string;
+}
+
+const { link } = Astro.props; 
+---
+<a href={ link } class="button">
+  <slot name="before"/>
+  <slot/>
+  <slot name="after"/>
+</a>
+
+<style>
+  .button {
+    display: inline-flex;
+    padding: 8px 16px;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    align-content: baseline;
+    line-height: 150%;
+    border-right: #000 1px solid;
+  }
+
+  .button:first-child {
+    border-left: #000 1px solid;
+  }
+  
+  .button:hover {
+    background-color: #555;
+  }
+</style>

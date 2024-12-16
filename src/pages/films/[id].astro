@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from "astro:content";
+
+
+export async function getStaticPaths() {
+  const films = await getCollection('films');
+  return films.map(film => ({
+    params: { id: film.slug },
+    props: { film },
+  }));
+}
+
+const { film } = Astro.props;
+const { data } = film;
+const { director, year, title, img } = data;
+
+const { Content } = await render(film);
+---
+
+<Layout title={title}>
+  <h1>{title}</h1>
+  <section class="section">
+    <img transition:name={`img-${film.slug}`} class="section-img" src={`../src/assets/images/${img}`} alt={title}>   
+    <div>
+      <p>Director: {director}</p> 
+      <p>Año: {year}</p>
+      <div>
+        <Content />
+      </div>
+    </div> 
+  </section>
+</Layout>
+
+<style>
+  .section {
+    display: flex;
+    gap: 1rem;
+  }
+  .section-img{
+    max-width: 300px;
+  }
+</style>

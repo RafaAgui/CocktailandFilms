@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
+const data = await response.json();
+const cocktails = data.drinks;
+
+
+
+const cocktail = cocktails.find((cocktail: { idDrink: string; }) => cocktail.idDrink === Astro.params.id);
+
+export async function getStaticPaths() {
+  const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
+  const data = await response.json();
+  const cocktails = data.drinks;
+    return cocktails.map((cocktail: { idDrink: any; }) => ({
+      params: { id: cocktail.idDrink },
+      props: { cocktail },
+    }));
+}
+const title = 'Cocktail';
+---
+
+<Layout title=`${title}-${cocktail.strDrink}`>
+  <h1 class="section-title">{cocktail.strDrink}</h1>
+  <section class="section">
+    <img transition:name={`img-${cocktail.idDrink}`} class="section-img" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+    <div>
+      <p class="section-text">{cocktail.strInstructionsES}</p>
+      <p class="section-text">{cocktail.strAlcoholic}</p>
+      <ul>
+       {cocktail.strIngredient1 ? 
+        (
+          <li>{cocktail.strIngredient1}</li>
+        ) : null}
+        {cocktail.strIngredient2 ? 
+        (
+          <li>{cocktail.strIngredient2}</li>
+        ) : null}
+        {cocktail.strIngredient3 ?
+        (
+          <li>{cocktail.strIngredient3}</li>
+        ) : null}
+        {cocktail.strIngredient4 ?
+        (
+          <li>{cocktail.strIngredient4}</li>
+        ) : null}
+
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .section {
+    display: flex;
+    gap: 1rem;
+  }
+  .section-img {
+    max-width: 300px;
+  }
+</style>

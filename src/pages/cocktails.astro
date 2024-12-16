@@ -1,0 +1,56 @@
+---
+const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
+const data = await response.json();
+const cocktails = data.drinks;
+---
+
+<div>
+  {cocktails.length ? (
+    <ul class="cocktails">
+      {cocktails.map((cocktail: { idDrink: string; strDrink: string; strDrinkThumb: string; strInstructionsES: string, strAlcoholic: string }) => (
+        <a href={`/cocktails/${cocktail.idDrink}`}>
+          <li class="cocktail-item">
+            <h2 class="cocktail-title">{cocktail.strDrink}</h2>
+            <img transition:name={`img-${cocktail.idDrink}`} class="cocktail-img" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+            <p class="cocktail-text">{cocktail.strInstructionsES}</p>
+          </li>
+        </a>
+      ))}
+    </ul>
+  ) : (
+    <p>Loading...</p>
+  )}
+</div>
+
+<style>
+.cocktails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: -1px;
+}
+.cocktail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0rem;
+  width: 100%;
+  max-width: 300px;
+  cursor: pointer;
+  border: 1px solid #000;
+  height: 100%;
+}
+.cocktail-title {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #000;
+}
+.cocktail-text,
+.cocktail-img {
+  padding-inline: 1rem;
+}
+</style>
