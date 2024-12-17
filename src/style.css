@@ -9,24 +9,27 @@
     white 60%
   );
 }
+
 html {
   font-family: serif;
   background: #ccc;
   color-scheme: light dark;
-  
 }
 
 * {
   box-sizing: border-box;
 }
+
 code {
   font-family:
     'Times New Roman', Times, serif
 }
+
 body{
   margin: 0;
   padding: 0;
 }
+
 main {
   margin: auto;
   padding: 1rem;
@@ -36,16 +39,19 @@ main {
   font-size: 20px;
   line-height: 1.6;
 }
+
 h1 {
   font-size: 5rem;
   line-height: 1;
   text-align: center;
   margin-bottom: 1em;
 }
+
 img {
   width: 100%;
   height: auto;
 }
+
 a {
   color: #000;
   text-decoration: none;

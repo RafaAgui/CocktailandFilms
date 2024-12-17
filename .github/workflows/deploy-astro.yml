@@ -2,6 +2,8 @@ name: Deploy Astro
 
 on:
   workflow_dispatch: # Permite ejecutar manualmente el workflow
+  push:
+    branches: [ "main" ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}  
