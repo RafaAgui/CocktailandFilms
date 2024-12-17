@@ -1,6 +1,8 @@
 ---
+import "./header.css";
 import HeaderButton from "./HeaderButton.astro";
 ---
+
 
 <header class="header">
   <HeaderButton link="/">DEMO-APP</HeaderButton>
@@ -12,18 +14,3 @@ import HeaderButton from "./HeaderButton.astro";
     <HeaderButton link="/films">Cine quinqui</HeaderButton>
   </nav>
 </header>
-
-<style>
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-inline: 1rem;
-    background-color: #fff;
-    border-bottom: #000 1px solid;
-  }
-
-  .header-nav {
-    display: flex;
-  }
-</style>
