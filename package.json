@@ -14,7 +14,8 @@
   "dependencies": {
     "astro": "^5.0.5",
     "jiti": "^2.4.1",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.2",
+    "wrangler": "^3.96.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
