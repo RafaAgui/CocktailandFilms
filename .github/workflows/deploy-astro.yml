@@ -33,7 +33,11 @@ jobs:
       - name: Build Astro project
         run: npm run build
 
-      # 5. Desplegamos con Wrangler
+      # 5. Construimos el proyecto
+      - name: Stylelint
+        run: npm run stylelint
+
+      # 6. Desplegamos con Wrangler
       - name: Deploy
         run: npx wrangler pages deploy ./dist
         env:
