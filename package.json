@@ -9,7 +9,10 @@
     "astro": "astro",
     "test": "vitest",
     "stylelint": "stylelint src/*.css",
-    "stylelintfix": "stylelint src/*.css --fix"
+    "stylelintfix": "stylelint src/*.css --fix",
+    "coverage": "vitest run --coverage",
+    "verbose": "vitest --reporter verbose --run",
+    "lint": "eslint"
   },
   "dependencies": {
     "@astrojs/react": "^4.1.1",
