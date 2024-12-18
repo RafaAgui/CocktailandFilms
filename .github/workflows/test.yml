@@ -7,9 +7,11 @@
 name: Run Tests
 
 on:
-  pull_request:
-    # Se ejecuta al pedirlos y al actualizarlos
-    types: [opened, synchronize]
+  push:
+    branches: [ "main" ]
+  # pull_request:
+  #   # Se ejecuta al pedirlos y al actualizarlos
+  #   types: [opened, synchronize]
 
 jobs:
   # Inspecciona los mensajes de los commits
