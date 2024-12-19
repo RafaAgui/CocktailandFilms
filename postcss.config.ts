@@ -1,10 +1,7 @@
 import autoprefixer from 'autoprefixer';
 
-
-const config = {
+export default {
   plugins: [
-    autoprefixer()
-  ]
-}
-
-module.exports = config
+    autoprefixer,
+  ],
+};
